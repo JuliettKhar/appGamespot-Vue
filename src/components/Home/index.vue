@@ -1,17 +1,17 @@
 <template>
     <div>
-        <Featured/>
+        <Feature/>
     </div>
 </template>
 
 
 <script>
-    import Featured from './featured.vue';
+    import Feature from './Feature';
     import Content from './content.vue';
 
     export default {
         components:{
-            Featured
+            Feature
         }
     }
 
