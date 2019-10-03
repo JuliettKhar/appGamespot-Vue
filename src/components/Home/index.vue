@@ -1,6 +1,7 @@
 <template>
     <div>
         <Feature/>
+        <Content />
     </div>
 </template>
 
@@ -11,7 +12,8 @@
 
     export default {
         components:{
-            Feature
+            Feature,
+            Content
         }
     }
 
