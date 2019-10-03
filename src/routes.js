@@ -2,11 +2,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from './components/Home/Index.vue';
+import Signin from './components/SignIn/SignIn.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component:Home }
+    { path: '/', component:Home },
+    { path: '/signin', component:Signin }
 ];
 
 export default new VueRouter({
