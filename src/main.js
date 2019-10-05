@@ -4,11 +4,14 @@ import router from './routes';
 import store from './Store/store';
 import VueMaterial from 'vue-material';
 import VueResource from 'vue-resource';
+import Vuelidate from 'vuelidate'
 
 import 'vue-material/dist/vue-material.min.css';
 
 Vue.use(VueMaterial);
 Vue.use(VueResource);
+Vue.use(Vuelidate);
+
 Vue.http.options.root = '';
 
 
