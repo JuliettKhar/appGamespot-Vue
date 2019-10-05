@@ -23,14 +23,14 @@ export default {
   data () {
     return {
       formData: {
-        email: '',
-        password: ''
+        email: 'admin@gmail.com',
+        password: 'admin123'
       }
     }
   }, 
   methods: {
     onSubmit () {
-      console.log(this.formData)
+      this.$store.dispatch('admin/signIn', this.formData);
     }
   }
 }
