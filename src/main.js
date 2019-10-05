@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './routes';
+import store from './Store/store';
 import VueMaterial from 'vue-material';
 import VueResource from 'vue-resource';
 
@@ -13,5 +14,6 @@ Vue.http.options.root = '';
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
