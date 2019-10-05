@@ -17,5 +17,5 @@ npm run build
 
 ### Lints and fixes files
 ```
-yarn run lint
+npm run lint
 ```
