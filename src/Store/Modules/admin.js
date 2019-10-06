@@ -61,7 +61,26 @@ const admin = {
       .catch( err => {
         commit('authFailed')
       })
-    }
+    },
+    refreshToken ( {commit} ) {
+      const refreshToken = localStorage.getItem('refresh');
+      if (refreshToken) {
+        Vue.http.post(`https://securetoken.googleapis.com/v1/token?key=${ApiKey}`, {
+          grant_type: 'refresh_token',
+          refresh_token: refreshToken
+        })
+        .then( resp => resp.json())
+        .then( authData => {
+          commit('authUser', {
+            idToken: authData.id_token,
+            refreshToken: authData.refresh_token,
+            type: 'refresh'
+          });
+          localStorage.setItem('token', authData.id_token);
+          localStorage.setItem('refresh', authData.refresh_token);
+        })
+      }
+    },
   },
 }
 

@@ -14,7 +14,10 @@ export default {
   components:{
     Header,
     Footer
-  }
+  },
+  created () {
+    this.$store.dispatch('admin/refreshToken');
+  },
 }
 </script>
 
