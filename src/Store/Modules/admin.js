@@ -12,10 +12,14 @@ const admin = {
     token: null,
     refresh: null,
     authFailed: false,
+    refreshLoading: true,
   },
   getters: {
     isAuth (state) {
-      if (state.token) { return true; }
+      if (state.token) { return true; };
+    },
+    refreshLoading (state) {
+      return state.refreshLoading;
     }
   },
   mutations: {
@@ -37,10 +41,13 @@ const admin = {
     logoutUser (state) {
       state.token = null;
       state.refresh = null;
-      localStorage.removeItem('token', authData.idToken);
-      localStorage.removeItem('refresh', authData.refreshToken);
+      localStorage.removeItem('token');
+      localStorage.removeItem('refresh');
       router.push('/');
     },
+    refreshLoading (state) {
+      state.refreshLoading = false;
+    }
 
   },
   actions: {
@@ -76,9 +83,12 @@ const admin = {
             refreshToken: authData.refresh_token,
             type: 'refresh'
           });
+          commit('refreshLoading');
           localStorage.setItem('token', authData.id_token);
           localStorage.setItem('refresh', authData.refresh_token);
         })
+      } else {
+        commit('refreshLoading');
       }
     },
   },
