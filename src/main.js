@@ -5,12 +5,13 @@ import store from './Store/store';
 import VueMaterial from 'vue-material';
 import VueResource from 'vue-resource';
 import Vuelidate from 'vuelidate'
-
+import wysiwyg from "vue-wysiwyg";
 import 'vue-material/dist/vue-material.min.css';
 
 Vue.use(VueMaterial);
 Vue.use(VueResource);
 Vue.use(Vuelidate);
+Vue.use(wysiwyg, {});
 
 Vue.http.options.root = '';
 
