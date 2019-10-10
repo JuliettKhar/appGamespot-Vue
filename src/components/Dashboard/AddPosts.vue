@@ -47,8 +47,15 @@
         </select>
       </div>
       <p class="error_label" v-if="$v.formdata.rating.$error">You need to select rating</p>
-      <button type="submit">Add post</button>
+      <button type="submit" @click="submitHandler">Add post</button>
     </form>
+    <md-dialog :md-active="dialog">
+      <p>Your post hasn't content. Are you sure?</p>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="dialogOnCancel">Oops, I want to add it</md-button>
+        <md-button class="md-danger" @click="dialogOnConfirm">Yes, I am sure</md-button>
+      </md-dialog-actions>
+    </md-dialog>
   </div>
 </template>
 
@@ -58,6 +65,7 @@ import {required, maxLength} from 'vuelidate/lib/validators';
 export default {
   data () {
     return {
+      dialog: false,
       formdata: {
         title: '',
         desc: '',
@@ -73,12 +81,36 @@ export default {
       },
       desc: {
         required,
-        maxLength: maxLength(6),
+        maxLength: maxLength(100),
       },
       rating: {
         required,
       }
     }
+  },
+  methods: {
+    submitHandler() {
+      if (!this.$v.$invalid) {
+          if (this.formdata.content === '') {
+           this.dialog = true; 
+          } else {
+            this.addPost();
+          }
+      } else {
+        alert('smth wrong');
+      }
+    },
+    addPost () {
+
+    },
+    dialogOnCancel () {
+      this.dialog = false;
+    },
+    dialogOnConfirm () {
+      this.dialog = false;
+      this.addPost();
+    },
+
   },
 }
 </script>
