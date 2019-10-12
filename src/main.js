@@ -13,7 +13,7 @@ Vue.use(VueResource);
 Vue.use(Vuelidate);
 Vue.use(wysiwyg, {});
 
-Vue.http.options.root = '';
+Vue.http.options.root = 'https://appgamespot-90bf1.firebaseio.com/';
 
 
 new Vue({

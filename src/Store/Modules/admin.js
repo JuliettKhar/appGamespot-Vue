@@ -13,6 +13,7 @@ const admin = {
     refresh: null,
     authFailed: false,
     refreshLoading: true,
+    addpost: false,
   },
   getters: {
     isAuth (state) {
@@ -20,7 +21,10 @@ const admin = {
     },
     refreshLoading (state) {
       return state.refreshLoading;
-    }
+    },
+    addPostStatus (state) {
+      return state.addpost;
+    },
   },
   mutations: {
     authUser (state, authData) {
@@ -47,7 +51,13 @@ const admin = {
     },
     refreshLoading (state) {
       state.refreshLoading = false;
-    }
+    },
+    addPosts (state) {
+      state.addpost = true;
+    },
+    clearAddedPost (state) {
+      state.addpost = false;
+    },
 
   },
   actions: {
@@ -91,6 +101,16 @@ const admin = {
         commit('refreshLoading');
       }
     },
+    addPost ({commit, state}, payload) {
+      Vue.http.post(`posts.json?auth=${state.token}`, payload)
+        .then(response => response.json())
+        .then(response => {
+          commit('addPosts');
+          setTimeout( () => {
+            commit('clearAddedPost');
+          }, 3000);
+        })
+    }
   },
 }
 

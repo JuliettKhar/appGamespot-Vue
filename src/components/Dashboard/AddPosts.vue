@@ -56,6 +56,7 @@
         <md-button class="md-danger" @click="dialogOnConfirm">Yes, I am sure</md-button>
       </md-dialog-actions>
     </md-dialog>
+    <div v-if="addPosts" class="post_succesfull">Post added</div>
   </div>
 </template>
 
@@ -101,7 +102,7 @@ export default {
       }
     },
     addPost () {
-
+      this.$store.dispatch('admin/addPost', this.formdata);
     },
     dialogOnCancel () {
       this.dialog = false;
@@ -109,6 +110,25 @@ export default {
     dialogOnConfirm () {
       this.dialog = false;
       this.addPost();
+    },
+    clearPost () {
+      this.$v.$reset();
+      this.formdata = {
+        title: '',
+        desc: '',
+        content: '',
+        rating: '',
+      };
+    },
+
+  },
+  computed: {
+    addPosts () {
+      let status = this.$store.getters['admin/addPostStatus'];
+      if (status) {
+        this.clearPost();
+      }
+      return status;
     },
 
   },
