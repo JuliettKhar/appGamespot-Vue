@@ -65,6 +65,9 @@ const admin = {
     imageUpload (state, image) {
       state.imageUpload = image.secure_url;
     },
+    clearImageUpload (state) {
+      state.imageUpload = null;
+    },
 
   },
   actions: {

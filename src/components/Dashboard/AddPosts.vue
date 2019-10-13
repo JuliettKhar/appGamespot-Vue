@@ -2,7 +2,7 @@
   <div class="dashboard_form">
     <h1>Add posts</h1>
     <div class="input_field">
-      <input type="file" name="" id="" @change="processFile($event)">
+      <input type="file" name="" id="" @change="processFile($event)" ref="myFileInput">
     </div>
     <form  @submit.prevent="submitHandler">
       <div v-if="imagesUpload">
@@ -120,6 +120,7 @@ export default {
     },
     clearPost () {
       this.$v.$reset();
+      this.$refs.myFileInput.value = '';
       this.formdata = {
         title: '',
         desc: '',
@@ -138,6 +139,7 @@ export default {
       let status = this.$store.getters['admin/addPostStatus'];
       if (status) {
         this.clearPost();
+        this.$store.commit('admin/clearImageUpload');
       }
       return status;
     },
@@ -147,6 +149,9 @@ export default {
       return imageUrl;
     }
 
+  },
+  destroyed () {
+     this.$store.commit('admin/clearImageUpload');
   },
 }
 </script>
