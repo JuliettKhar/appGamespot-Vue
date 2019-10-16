@@ -12,7 +12,7 @@
           </div>
         </md-card-header>
         <md-card-actions>
-          <Btn type="link" :linkTo="`posts/${post.id}`" :addClass="['small_link']">See review</Btn>
+          <Btn type="link" :linkTo="`/post/${post.id}`" :addClass="['small_link']">See review</Btn>
         </md-card-actions>
       </md-card>
     </div>
