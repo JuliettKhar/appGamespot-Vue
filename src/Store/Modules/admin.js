@@ -158,6 +158,18 @@ const admin = {
             }
             commit('getAdminPosts', posts.reverse());
         });
+    },
+    deletePost ({commit, state}, payload) {
+      Vue.http.delete(`posts/${payload}.json?auth=${state.token}`)
+        .then( resp => {
+         let newPosts = [];
+         state.adminPosts.forEach(post => {
+           if (post.id != payload) {
+            newPosts.push(post);
+           }
+         });
+         commit('getAdminPosts', newPosts);
+        })
     }
   },
 }

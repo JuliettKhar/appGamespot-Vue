@@ -14,14 +14,28 @@
         <md-table-cell>
           <div class="post_delete" @click="deleteHandler(post.id)">Delete</div>
         </md-table-cell>
-
       </md-table-row>
     </md-table>
+    <md-dialog-confirm
+      :md-active.sync="confirmDelete"
+      md-title="Confirm delete"
+      md-content="Are you sure ?"
+      md-confirm-text="Yes"
+      md-delete-text="No"
+      @md-cancel="onCancel"
+      @md-confirm="onConfirm"
+    />
   </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      confirmDelete: false,
+      id: ''
+    }
+  },
   computed: {
     posts () {
       let posts = this.$store.getters['admin/getAdminPost'];
@@ -29,7 +43,18 @@ export default {
     }
   },
   methods: {
-    deleteHandler (id) {}
+    deleteHandler (id) {
+      this.id = id;
+      this.confirmDelete = true;
+    },
+    onCancel () {
+      this.id = '';
+      this.confirmDelete = false;
+    },
+    onConfirm () {
+      this.$store.dispatch('admin/deletePost', this.id);
+      this.confirmDelete = false;
+    },
   },
   created () {
     this.$store.dispatch('admin/getAdminPosts');
