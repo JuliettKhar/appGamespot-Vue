@@ -12,7 +12,7 @@
     "vue": "^2.5.17",
     "vue-carousel": "^0.14.0",
     "vue-material": "^1.0.0-beta-10.2",
-    "vue-resource": "^1.5.1",
+    "vue-resource": "^1.5.3",
     "vue-router": "^3.0.1",
     "vue-scroll-reveal": "^1.0.11",
     "vue-wysiwyg": "^1.7.2",
