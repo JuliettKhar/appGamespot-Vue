@@ -145,6 +145,7 @@ export default {
     },
     imagesUpload () {
       let imageUrl = this.$store.getters['admin/imgUpload'];
+      // eslint-ignore
       this.formdata.img = imageUrl;
       return imageUrl;
     }

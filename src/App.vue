@@ -1,19 +1,19 @@
 <template>
   <div>
-    <Header/>
+    <AppHeader/>
       <router-view/>
-    <Footer/>
+    <AppFooter/>
   </div>
 </template>
 
 <script>
-import Header from './components/Header-Footer/Header';
-import Footer from './components/Header-Footer/Footer';
+import AppHeader from './components/Header-Footer/AppHeader.vue';
+import AppFooter from './components/Header-Footer/AppFooter.vue';
 
 export default {
   components:{
-    Header,
-    Footer
+    AppHeader,
+    AppFooter
   },
   created () {
     this.$store.dispatch('admin/refreshToken');

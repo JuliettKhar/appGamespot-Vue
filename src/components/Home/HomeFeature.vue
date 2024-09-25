@@ -22,7 +22,7 @@
 
 <script>
     import { Carousel, Slide } from 'vue-carousel';
-    import Btn  from '../UI/Buutton.vue';
+    import Btn  from '../UI/UiBuutton.vue';
     import SlideOne from '../../assets/images/featured/1.jpg';
     import SlideTwo from '../../assets/images/featured/2.jpg';
     import SlideThree from '../../assets/images/featured/3.jpg';

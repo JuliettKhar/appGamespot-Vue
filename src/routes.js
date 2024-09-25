@@ -2,13 +2,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './Store/store';
 
-import Home from './components/Home/Index.vue';
+import Home from './components/Home/HomeIndex.vue';
 import Signin from './components/SignIn/SignIn.vue';
-import Dashboard from './components/Dashboard/Dashboard.vue';
+import Dashboard from './components/Dashboard/AppDashboard.vue';
 import MainDashboard from './components/Dashboard/DashboardMain.vue';
 import AddPosts from './components/Dashboard/AddPosts.vue';
 import ListPosts from './components/Dashboard/ListPosts.vue';
-import Post from './components/Post/Post.vue';
+import Post from './components/Post/PostComponent.vue';
 import NotFound from './components/404/NotFound.vue';
 
 Vue.use(VueRouter);
@@ -56,7 +56,7 @@ const routes = [
 export default new VueRouter({
     mode:'history',
     routes,
-    scrollBehavior(from,to,savedPosition){
+    scrollBehavior(){
         return {x:0,y:0}
     }
 })

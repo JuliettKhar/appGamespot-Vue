@@ -25,7 +25,7 @@
 </template>
 <script>
 //  import posts from '../../assets/posts.js';
-import Btn  from '../UI/Buutton.vue';
+import Btn  from '../UI/UiBuutton.vue';
 export default {
  data () {
    return {
